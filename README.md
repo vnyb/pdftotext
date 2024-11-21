@@ -33,5 +33,5 @@ make docker
 docker run --rm -v <path/to/document.pdf>:/app/input.pdf pdftotext
 
 # Convert only one page
-docker run --rm -v <path/to/document.pdf>:/app/input.pdftotext pdftotext <page number>
+docker run --rm -v <path/to/document.pdf>:/app/input.pdf pdftotext <page number>
 ```

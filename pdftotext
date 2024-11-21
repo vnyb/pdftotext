@@ -1,0 +1,22 @@
+#!/bin/sh -e
+
+path="$1"
+page="$2"
+
+echo "args $1 $2 $3"
+
+if [ -z "$path" ]; then
+  echo "usage: $0 <path>" >&2
+  exit 1
+fi
+
+if [ -n "$page" ]; then
+  echo "Extracting page $page" >&2
+  tmp="$(mktemp)"
+  pdftk "$path" cat "$page" output "$tmp"
+  path="$tmp"
+fi
+
+echo "Converting to text" >&2
+
+java -jar pdftotext.jar "$path" | fromdos | sed -E 's/[[:space:]]+$//' | sed -Ez 's/\n{3,}/\n\n/g'

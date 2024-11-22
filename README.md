@@ -12,6 +12,12 @@ make jar
 
 ## Run
 
+Requires `pdftk-java`:
+
+```bash
+sudo apt install pdftk-java
+```
+
 ```bash
 # Convert PDF document to text
 ./pdftotext <path/to/document.pdf>
